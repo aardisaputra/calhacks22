@@ -2,6 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from 'yup';
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 const validate = values => {
   const errors = {};
@@ -21,6 +22,11 @@ const validate = values => {
 };
 
 const InvoiceForm = () => {
+  const navigate = useNavigate();
+
+  const navToHome = () => {
+    navigate("/");
+}
     return (
         <Formik
             initialValues = {{
@@ -50,6 +56,7 @@ const InvoiceForm = () => {
                     <h1>
                         Welcome to Aequalis.
                     </h1>
+                    <button onClick={navToHome} className="navHome">Return Home</button>
                     <h3>
                         Please fill out information regarding your invoice.
                     </h3>
@@ -66,7 +73,7 @@ const InvoiceForm = () => {
                       <input
                         id="serviceType"
                         type="text"
-                        {...formik.getFieldProps('hospitalName')}
+                        {...formik.getFieldProps('serviceType')}
                       />
                       {formik.touched.serviceType && formik.errors.serviceType ? <div>{formik.errors.serviceType}</div> : null}
                 
@@ -74,7 +81,7 @@ const InvoiceForm = () => {
                       <input
                         id="amount"
                         type="text"
-                        {...formik.getFieldProps('hospitalName')}
+                        {...formik.getFieldProps('amount')}
                       />
                       {formik.touched.amount && formik.errors.amount ? <div>{formik.errors.amount}</div> : null}
                 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import "./styles.css"
 
 
 function Home() {
@@ -14,11 +15,18 @@ function Home() {
         navigate("/public");
     }
 
+    const navToChoice = () => {
+        navigate("/choice");
+    }
+
     return (
         <div>
             <h1>Welcome Aequalis's Prototype Demonstration.</h1>
-            <button onClick={navToInternal}>Internal Invoicing Page for Hospitals</button>
-            <button onClick={navToPublic}>Visualization Page Accessible to Public</button>
+            <div className="home">
+                <button className='first' onClick={navToInternal}>Internal Invoicing Page for Hospitals</button>
+                <button className='second' onClick={navToPublic}>Visualization Page Accessible to All Public Services</button>
+            </div>
+
         </div>
     );
 };
